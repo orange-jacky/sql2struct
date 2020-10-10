@@ -1,19 +1,20 @@
 # sql2struct
 
-mysql 创建table sql语句, 直接生成go对应的struct, orm选用的是xorm
-支持sql文件中包含多个create table语句
+>mysql 创建table sql语句, 直接生成go对应的struct, orm选用的是xorm
+>支持sql文件中包含多个create table语句
 
-create table语句中字段类型, 只写了经常用到的, 可以在sql2struct.go文件的HFiledtype中添加自己需要的类型转换
-
-
-使用方式
-1.下载项目
-2.go run *.go  xxx.sql
+>create table语句中字段类型, 只写了经常用到的, 可以在sql2struct.go文件的HFiledtype中添加自己需要的类型转换
 
 
-example: 
+#使用方式
+>1.下载项目
+>2.go run *.go  xxx.sql
+
+
+#example: 
 
 a.sql的内容是
+```
 create table tb_user_match_policy
 (
    id                   int not null auto_increment,
@@ -36,10 +37,12 @@ create table tb_user_type
    state                int default 1 comment '状态 0：无效, 1: 有效(默认)',
    primary key (id)
 )
+```
 
 执行转换
 go run *.go  a.sql
 输出
+```
 type TbUserMatchPolicy struct { //tb_user_match_policy
 	Id          int64     `json:"id" xorm:"id"`                     //
 	UserId      int64     `json:"user_id" xorm:"user_id"`           //用户ID
@@ -53,7 +56,7 @@ type TbUserType struct { //tb_user_type
 	Name  string `json:"name" xorm:"name"`   //用户类型名称
 	State int    `json:"state" xorm:"state"` //状态 0：无效, 1: 有效(默认)
 }
-
+```
 
 
 
