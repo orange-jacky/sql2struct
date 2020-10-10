@@ -6,12 +6,12 @@
 >create table语句中字段类型, 只写了经常用到的, 可以在sql2struct.go文件的HFiledtype中添加自己需要的类型转换
 
 
-#使用方式
->1.下载项目
->2.go run *.go  xxx.sql
+# 使用方式
+> 1.下载项目
+> 2.go run *.go  xxx.sql
 
 
-#example: 
+# example: 
 
 a.sql的内容是
 ```
